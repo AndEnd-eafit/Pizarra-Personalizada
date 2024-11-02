@@ -27,6 +27,16 @@ st.markdown("""
 # Título de la aplicación
 st.title("Pizarra personalizada")
 
+# Imagen inicial
+if "canvas_loaded" not in st.session_state:
+    st.session_state.canvas_loaded = False
+
+if not st.session_state.canvas_loaded:
+    st.image("path/to/your/image.png", use_column_width=True)  # Reemplaza con la ruta de tu imagen
+    start_button = st.button("Comenzar a dibujar")
+    if start_button:
+        st.session_state.canvas_loaded = True
+
 # Parámetros en barra lateral
 with st.sidebar:
     st.subheader('Escoger el tamaño del pincel')
