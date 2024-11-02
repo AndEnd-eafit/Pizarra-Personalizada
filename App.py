@@ -31,8 +31,11 @@ st.title("Pizarra personalizada")
 with st.sidebar:
     st.subheader('Escoger el tamaño del pincel')
     stroke_width = st.slider('Selecciona el ancho de línea', 1, 30, 15)
-    
+
     st.subheader('Escoge el color del pincel')
+    stroke_color = st.color_picker("Selecciona el color del pincel", '#000000')
+    
+    st.subheader('Colores predeterminados')
     stroke_color = st.radio('Selecciona un color:', 
                             ['#FF0000', '#FFA500', '#FFFF00', '#008000', '#40E0D0', 
                              '#0000FF', '#FF00FF', '#800080', '#FFFFFF'], 
