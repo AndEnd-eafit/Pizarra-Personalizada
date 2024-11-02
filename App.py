@@ -32,7 +32,7 @@ if "canvas_loaded" not in st.session_state:
     st.session_state.canvas_loaded = False
 
 if not st.session_state.canvas_loaded:
-    st.image("Yoru - Dibujando.png", use_column_width=True)  # Reemplaza con la ruta de tu imagen
+    st.image("Pizarra-Personalizada/Yoru - Dibujando.png", use_column_width=True)  # Reemplaza con la ruta de tu imagen
     start_button = st.button("Comenzar a dibujar")
     if start_button:
         st.session_state.canvas_loaded = True
