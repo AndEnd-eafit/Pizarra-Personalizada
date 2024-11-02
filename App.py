@@ -29,7 +29,7 @@ st.title("Pizarra personalizada")
 
 # Specify canvas parameters in application
 drawing_mode = "freedraw"
-stroke_width = st.slider('Selecciona el ancho de línea', 1, 30, 15)
+
 stroke_color = '#000000' # Set background color to white
 bg_color = '#d6f0f2'
 
@@ -43,3 +43,9 @@ canvas_result = st_canvas(
     width=600,
     key="canvas",
 )
+
+# Parámetros en barra lateral
+with st.sidebar:
+    st.subheader('Escoger el tamaño del pincel')
+    stroke_width = st.slider('Selecciona el ancho de línea', 1, 30, 15)
+    st.subheader('Escoge el color del pincel')
