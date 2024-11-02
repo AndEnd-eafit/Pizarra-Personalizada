@@ -3,7 +3,7 @@ from streamlit_drawable_canvas import st_canvas
 
 st.set_page_config(page_title='Mi pizarra personalizada', layout='wide', initial_sidebar_state="collapsed")
 
-# Estilos de tipografía
+# Estilos de tipografía y centrado de imagen
 st.markdown("""
     <style>
     .titulo {
@@ -21,6 +21,14 @@ st.markdown("""
         font-size: 18px;
         text-align: justify;
     }
+    .centered-image {
+        display: flex;
+        justify-content: center;
+    }
+    img.custom-image {
+        width: 600px;
+        height: 500px;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -32,7 +40,10 @@ if "canvas_loaded" not in st.session_state:
     st.session_state.canvas_loaded = False
 
 if not st.session_state.canvas_loaded:
-    st.image("Yoru_Dibujando.jpg", use_column_width=True)  # Reemplaza con la ruta de tu imagen
+    st.markdown(
+        '<div class="centered-image"><img src="data:image/jpg;base64,{}" class="custom-image" /></div>'.format(st.image("Yoru_Dibujando.jpg", use_column_width=False).getvalue().decode("utf-8")),
+        unsafe_allow_html=True
+    )
     start_button = st.button("Comenzar a dibujar")
     if start_button:
         st.session_state.canvas_loaded = True
