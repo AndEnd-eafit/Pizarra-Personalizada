@@ -24,6 +24,9 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 # Add canvas component
+# Título de la aplicación
+st.title("Pizarra personalizada")
+
 # Specify canvas parameters in application
 drawing_mode = "freedraw"
 stroke_width = st.slider('Selecciona el ancho de línea', 1, 30, 15)
@@ -40,6 +43,3 @@ canvas_result = st_canvas(
     width=600,
     key="canvas",
 )
-
-# Título de la aplicación
-st.title("Pizarra personalizada")
