@@ -40,3 +40,6 @@ canvas_result = st_canvas(
     width=600,
     key="canvas",
 )
+
+# Título de la aplicación
+st.title("Pizarra personalizada")
