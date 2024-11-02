@@ -2,7 +2,7 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 
-st.set_page_config(page_title='Reconocimiento de Dígitos escritos a mano', layout='wide')
+st.set_page_config(page_title='Mi pizarra personalizada', layout='wide', initial_sidebar_state="collapsed")
 
 st.markdown("""
     <style>
