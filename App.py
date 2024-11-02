@@ -30,7 +30,7 @@ st.markdown("""
     }
     img.custom-image {
         width: 600px;
-        height: 500px;
+        height: 600px;
     }
     </style>
     """, unsafe_allow_html=True)
