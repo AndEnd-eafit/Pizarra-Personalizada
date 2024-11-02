@@ -1,5 +1,8 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
+from PIL import Image
+import base64
+import io
 
 st.set_page_config(page_title='Mi pizarra personalizada', layout='wide', initial_sidebar_state="collapsed")
 
@@ -40,8 +43,16 @@ if "canvas_loaded" not in st.session_state:
     st.session_state.canvas_loaded = False
 
 if not st.session_state.canvas_loaded:
+    # Cargar la imagen y convertirla a base64
+    image_path = "Yoru_Dibujando.jpg"  # Reemplaza con la ruta de tu imagen
+    image = Image.open(image_path)
+    buffered = io.BytesIO()
+    image.save(buffered, format="JPEG")
+    img_str = base64.b64encode(buffered.getvalue()).decode()
+
+    # Mostrar la imagen centrada
     st.markdown(
-        '<div class="centered-image"><img src="data:image/jpg;base64,{}" class="custom-image" /></div>'.format(st.image("Yoru_Dibujando.jpg", use_column_width=False).getvalue().decode("utf-8")),
+        f'<div class="centered-image"><img src="data:image/jpeg;base64,{img_str}" class="custom-image" /></div>',
         unsafe_allow_html=True
     )
     start_button = st.button("Comenzar a dibujar")
