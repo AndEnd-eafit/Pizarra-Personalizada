@@ -21,14 +21,6 @@ st.markdown("""
         font-size: 18px;
         text-align: justify;
     }
-    .color-box {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        margin-right: 5px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -40,30 +32,29 @@ with st.sidebar:
     st.subheader('Escoger el tamaño del pincel')
     stroke_width = st.slider('Selecciona el ancho de línea', 1, 30, 15)
 
-    st.subheader('Escoge el color del pincel')
+    # Selección entre color personalizado o colores predeterminados
+    color_option = st.radio("Escoge el tipo de color:", ("Color personalizado", "Colores predeterminados"))
 
-    # Colores predefinidos en un diccionario
-    colors = {
-        'Rojo': '#FF0000',
-        'Naranja': '#FFA500',
-        'Amarillo': '#FFFF00',
-        'Verde': '#008000',
-        'Turquesa': '#40E0D0',
-        'Azul': '#0000FF',
-        'Magenta': '#FF00FF',
-        'Púrpura': '#800080',
-        'Blanco': '#FFFFFF'
-    }
-
-    # Botón de selección de color predeterminado
-    selected_color = st.radio("Selecciona un color predeterminado:", list(colors.keys()))
-
-    # Botón de selección para color personalizado
-    if st.checkbox("Usar color personalizado"):
+    # Color personalizado
+    if color_option == "Color personalizado":
         stroke_color = st.color_picker("Selecciona el color del pincel", '#000000')
+    # Colores predeterminados
     else:
-        # Color del pincel seleccionado
-        stroke_color = colors[selected_color]
+        stroke_color = st.radio('Selecciona un color:',
+                                ['#FF0000', '#FFA500', '#FFFF00', '#008000', '#40E0D0',
+                                 '#0000FF', '#FF00FF', '#800080', '#FFFFFF'],
+                                index=0,
+                                format_func=lambda x: {
+                                    '#FF0000': 'Rojo',
+                                    '#FFA500': 'Naranja',
+                                    '#FFFF00': 'Amarillo',
+                                    '#008000': 'Verde',
+                                    '#40E0D0': 'Turquesa',
+                                    '#0000FF': 'Azul',
+                                    '#FF00FF': 'Magenta',
+                                    '#800080': 'Púrpura',
+                                    '#FFFFFF': 'Blanco'
+                                }[x])
 
 # Parámetros del canvas
 bg_color = '#d6f0f2'
