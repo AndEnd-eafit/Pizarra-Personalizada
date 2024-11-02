@@ -2,6 +2,27 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 
+st.set_page_config(page_title='Reconocimiento de Dígitos escritos a mano', layout='wide')
+
+st.markdown("""
+    <style>
+    .titulo {
+        font-family: 'Lexend', sans-serif;
+        font-size: 36px;
+        text-align: center;
+    }
+    .subtitulo {
+        font-family: 'Inter', sans-serif;
+        font-size: 24px;
+        text-align: center;
+    }
+    .contenido {
+        font-family: 'Inter', sans-serif;
+        font-size: 18px;
+        text-align: justify;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 # Add canvas component
 # Specify canvas parameters in application
 drawing_mode = "freedraw"
